@@ -99,9 +99,9 @@ app.set('view-engine' ,'ejs')
 app.use(express.urlencoded({extended: false}))
 app.use(express.static(__dirname + '/public'))
 
-app.listen(port, () => {
-    console.log(`Find the app on localhost:${port}`)
-})
+app.listen(process.env.PORT || 5000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
 
 app.get('/', (req, res) =>{
     res.render('index.ejs')
