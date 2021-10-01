@@ -63,7 +63,9 @@ var signatures = {
     JVBERi0: "application/pdf",
     R0lGODdh: "image/gif",
     R0lGODlh: "image/gif",
-    iVBORw0KGgo: "image/png"
+    iVBORw0KGgo: "image/png",
+    RVhF: "application/exe",
+    TVA0: "video/mp4"
 }
   
 function detectMimeType(b64) {
