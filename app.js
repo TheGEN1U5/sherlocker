@@ -134,7 +134,6 @@ app.post('/decrypt', upload.single('file'), (req,res)=>{
     encryptor=seedToKey(seed)
     decryptedData = decrypt(encryptedData, encryptor.key, encryptor.vector)
     cleanData = decryptedData.replace(/[\b\x07\x05\x10\x01\x02\x03\x04\x05\x06\x07\x08\x09]/g, '')
-    
-    dataBlob = b64toBlob(cleanData,detectMimeType(cleanData))
-    
+    extension = detectMimeType(cleanData).split('/')[1]
+    res.render('success.ejs',{b64:cleanData,mime:detectMimeType(cleanData),ext:extension})
 })
