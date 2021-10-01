@@ -1,9 +1,44 @@
-<form action="/encrypt" method="post" enctype="multipart/form-data">
-    <label for="#seed">16 Digit seed</label>
-    <input type="number" name="seed" id="#seed">
-    <br>
-    <label for="#file">Upload file</label>
-    <input type="file" name="file" id="file">
-    <br>
-    <input type="submit" value="Encrypt">
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Sherlocker</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div class="mount">
+    <div class="title">
+      <h1>Sherlocker</h1>
+      <span>Not even Sherlock himself can trace you!</span>
+    </div>
+
+
+    <div class='file-input'>
+      <form action="/encrypt" method="post" enctype="multipart/form-data" id="mainform">
+      
+      <div class="seed-cont">
+      <label for="#seed" style="margin: 0px 4px;">Seed</label>
+      <input class="seed" id="seed" placeholder="your 16-digit seed"><br>
+      </div>
+
+      <label for="file" class="button">
+         Upload File
+      </label>
+      <span id="file-selected"></span>
+      <input id="file" type="file"/>
+      </form>
+    </div>
+
+  <div class="button-smb" id="submit">Encrypt</div>
+
+  </div>
+  <Br><br><Br><br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
