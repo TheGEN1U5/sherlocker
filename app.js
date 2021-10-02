@@ -65,7 +65,8 @@ var signatures = {
     R0lGODlh: "image/gif",
     iVBORw0KGgo: "image/png",
     RVhF: "application/exe",
-    TVA0: "video/mp4"
+    TVA0: "video/mp4",
+    UEsDBB: "application/doc" 
 }
   
 function detectMimeType(b64) {
@@ -74,25 +75,6 @@ function detectMimeType(b64) {
             return signatures[s];
         }
     }
-}
-const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
-    const byteCharacters = atob(b64Data);
-    const byteArrays = [];
-  
-    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        const slice = byteCharacters.slice(offset, offset + sliceSize);
-  
-        const byteNumbers = new Array(slice.length);
-        for (let i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-        }
-  
-        const byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
-    }
-  
-    const blob = new Blob(byteArrays, {type: contentType});
-    return blob;
 }
   
   
@@ -117,7 +99,7 @@ app.post('/encrypt', upload.single('file'), (req,res)=>{
     base64data = buffer.toString('base64')
     encryptor=seedToKey(seed)
     encryptedData = encrypt(base64data, encryptor.key, encryptor.vector)
-    var text = encryptedData
+    var text = base64data
     res.set({'Content-Disposition': 'attachment; filename=\"data.txt\"','Content-type': 'text/txt'})
     res.send(text);
 })

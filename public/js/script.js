@@ -1,5 +1,5 @@
 $(document).ready(function () {
-$('#file').bind('change', function() { var fileName = ''; fileName = $(this).val(); $('#file-selected').html(fileName); }) 
+$('#file').bind('change', function() { var fileName = 'dfv'; fileName = $(this).val().replace(/C:\\fakepath\\/i, ''); $('#file-selected').html(fileName); }) 
 
 });
 
