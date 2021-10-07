@@ -99,7 +99,7 @@ app.post('/encrypt', upload.single('file'), (req,res)=>{
     base64data = buffer.toString('base64')
     encryptor=seedToKey(seed)
     encryptedData = encrypt(base64data, encryptor.key, encryptor.vector)
-    var text = base64data
+    var text = encryptedData
     res.set({'Content-Disposition': 'attachment; filename=\"data.txt\"','Content-type': 'text/txt'})
     res.send(text);
 })
