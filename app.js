@@ -61,12 +61,15 @@ const decrypt = (encrypted, key, iv)=>{
 }
 var signatures = {
     JVBERi0: "application/pdf",
+    "/9j": "image/jpeg", 
+    "/9g": "image/jpeg", 
     R0lGODdh: "image/gif",
-    R0lGODlh: "image/gif",
     iVBORw0KGgo: "image/png",
     RVhF: "application/exe",
     TVA0: "video/mp4",
-    UEsDBB: "application/doc" 
+    UEsDBB: "application/doc",
+    UEsDBA: "application/zip"
+
 }
   
 function detectMimeType(b64) {
@@ -88,20 +91,27 @@ app.listen(process.env.PORT || 5000, function(){
   });
 
 app.get('/', (req, res) =>{
-    res.render('index.ejs')
+    res.render('index.ejs',{err: ''})
 })
 app.post('/encrypt', upload.single('file'), (req,res)=>{
     seed = req.body.seed
+    filname = 
     data = {
         data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename))
     }
     buffer = data.data
     base64data = buffer.toString('base64')
-    encryptor=seedToKey(seed)
-    encryptedData = encrypt(base64data, encryptor.key, encryptor.vector)
-    var text = encryptedData
-    res.set({'Content-Disposition': 'attachment; filename=\"data.txt\"','Content-type': 'text/txt'})
-    res.send(text);
+    fs.unlinkSync(path.join(__dirname + '/uploads/' + req.file.filename))
+    if(detectMimeType(base64data) == undefined){
+        res.render('index.ejs', {err: "Sorry, this file type is unsupported. Please mail brycelynch2020@gmail.com to get this in the next version"})
+    }
+    else{
+        encryptor=seedToKey(seed)
+        encryptedData = encrypt(base64data, encryptor.key, encryptor.vector)
+        var text = encryptedData
+        res.set({'Content-Disposition': 'attachment; filename=\"data.txt\"','Content-type': 'text/txt'})
+        res.send(text);
+    }
 })
 
 app.get('/decrypt', (req, res)=>{

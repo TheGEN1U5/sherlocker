@@ -14,8 +14,15 @@
   <div class="mount">
     <div class="title">
       <h1>Sherlocker</h1>
-      <span>Not even Sherlock himself can trace you! <br>
-        <a href="/decrypt"> Decrypt Instead?</a></span>
+      <span>Not even Sherlock himself can trace you! 
+        <br>
+        <a href="/"> Encrypt Instead?</a>
+        <br>
+        <% if (err) { %>
+          <span style="color: red;">
+            <%- err %>
+          </span>
+        <% } %>
     </div>
 
 
@@ -24,7 +31,7 @@
       
       <div class="seed-cont">
       <label for="#seed" style="margin: 0px 4px;">Seed</label>
-      <input class="seed" id="seed" placeholder="your 16-digit seed" name="seed" type="number" min="16" max="16" required style=" width: 114px; padding: 6px;"><br>
+      <input class="seed" id="seed" placeholder="your 16-digit seed" name="seed" type="number" min="1000000000000000" max="9999999999999999" required style=" width: 200px; padding: 6px;"><br>
       </div>
 
       <label for="file" class="button">
@@ -32,13 +39,13 @@
       </label>
       <span id="file-selected"></span>
       <input id="file" type="file" name="file" required>
+      <input id="submit" value = "Encrypt" type="submit" style="margin-top: 20px;">
       </form>
     </div>
 
-  <div class="button-smb" id="submit">Encrypt</div>
   </div>
+  <div id="version" style="margin-left: 20px; margin-top: 20px; color: red; font-weight: bold;">Version 1.0.1</div>
   <Br><br><Br><br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
   </body>
 </html>
