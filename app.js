@@ -115,7 +115,7 @@ app.post('/encrypt', upload.single('file'), (req,res)=>{
 })
 
 app.get('/decrypt', (req, res)=>{
-    res.render('decrypt.ejs')
+    res.render('decrypt.ejs',{err: ''})
 })
 app.post('/decrypt', upload.single('file'), (req,res)=>{
     seed = req.body.seed

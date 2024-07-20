@@ -1,51 +1,51 @@
 <!DOCTYPE html>
-<html>
-  <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Sherlocker</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-  <div class="mount">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sherlocker Encrypt</title>
+</head>
+<body>
     <div class="title">
-      <h1>Sherlocker</h1>
-      <span>Not even Sherlock himself can trace you! 
-        <br>
-        <a href="/"> Encrypt Instead?</a>
-        <br>
-        <% if (err) { %>
-          <span style="color: red;">
-            <%- err %>
-          </span>
-        <% } %>
+        <img src="images/logo.png" class="logo">
+        <span>0xSherl0cker</span>
     </div>
-
-
-    <div class='file-input'>
-      <form action="/encrypt" method="post" enctype="multipart/form-data" id="mainform">
-      
-      <div class="seed-cont">
-      <label for="#seed" style="margin: 0px 4px;">Seed</label>
-      <input class="seed" id="seed" placeholder="your 16-digit seed" name="seed" type="number" min="1000000000000000" max="9999999999999999" required style=" width: 200px; padding: 6px;"><br>
-      </div>
-
-      <label for="file" class="button">
-         Upload File
-      </label>
-      <span id="file-selected"></span>
-      <input id="file" type="file" name="file" required>
-      <input id="submit" value = "Encrypt" type="submit" style="margin-top: 20px;">
-      </form>
+    <div class="main">
+        <div class="seed">
+            <div class="wrapper">
+                <div class="subhead">
+                    Not even Sherlock himself can trace you! 
+                    <br>
+                    <a href="/decrypt"> Decrypt Instead?</a>
+                </div>
+                <span class="subhead">
+                    <% if (err) { %>
+                        <br>
+                        <span class="error" style="color: red;">
+                            <%- err %>
+                        </span>
+                    <% } %>
+                  </span>
+                <br><br>
+                <form action="/encrypt" method="post" enctype="multipart/form-data" id="mainform">
+                    <div class="seed-cont-wrapper">
+                        <div class="seed-cont">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg_icon bi-lock-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                            </svg>
+                            <input class="seed-inp" id="seed" placeholder="Enter your 16-digit Seed to lock" name="seed" type="number" min="1000000000000000" max="9999999999999999" required  autocomplete="off"><br>
+                        </div>
+                    </div>
+                    <br>
+                    <input id="file" type="file" name="file" required><br>
+                    <input id="submit" value = "Encrypt" type="submit" style="margin-top: 20px;">
+                </form>
+            </div>
+        </div>
     </div>
-
-  </div>
-  <div id="version" style="margin-left: 20px; margin-top: 20px; color: red; font-weight: bold;">Version 1.0.1</div>
-  <Br><br><Br><br>
+    <br><br><br><br>
+    <div id="version" style="margin-left: 20px; margin-top: 20px; color: red; font-weight: bold;">Version 1.1.0</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  </body>
+</body>
 </html>
